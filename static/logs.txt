@@ -1,0 +1,3 @@
+[03:34:44] Bank sent $1500 to qwe
+[03:34:44] Bank new balance: $19080
+[03:34:44] qwe new balance: $1500
