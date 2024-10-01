@@ -1,3 +1,4 @@
+const { clear } = require('console');
 const fs = require('fs');
 
 const OUT_OF_JAIL = "Get out of jail free. This card may be kept until needed, traded or sold.";
@@ -1040,6 +1041,8 @@ class GameService {
         this.ws.broadcast(JSON.stringify({type: 'game', game: this.game}));
     }
 
+    lTimer = null;
+
     sendLog = (message) => {
         const date = new Date();
         message = "[" + date.getHours().toString().padStart(2, '0') + ":" + date.getMinutes().toString().padStart(2, '0') + ":" + date.getSeconds().toString().padStart(2, '0') + "] " + message;
@@ -1051,7 +1054,11 @@ class GameService {
         }
 
         this.ws.broadcast(JSON.stringify({type: 'log', message: this.logs}));
-        this.sendToWs();
+        if(this.lTimer) clearTimeout(this.lTimer);
+        this.lTimer = setTimeout(() => {
+            this.sendToWs();
+            this.lTimer = null;
+        }, 200);
     }
 
     addToChat = (message, player) => {

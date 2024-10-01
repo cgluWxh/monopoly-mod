@@ -60,7 +60,7 @@ wss.on('connection', function (ws) {
 
     // sending state of the game to new connections
     wss.broadcast(JSON.stringify({type: 'game', game: gameService.game}));
-    wss.broadcast(JSON.stringify({type: 'log', players: gameService.logs || []}));
+    // wss.broadcast(JSON.stringify({type: 'log', players: gameService.logs || []}));
 
     ws.on('error', function (error) {
         console.log(error);
