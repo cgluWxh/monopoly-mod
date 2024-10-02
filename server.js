@@ -2,7 +2,7 @@ const HTTPS_PORT = process.env.PORT || 8443;
 
 const key = process.env.HTTP_TLS_KEY || 'key.pem';
 const cert = process.env.HTTP_TLS_CERTIFICATE || 'cert.pem';
-const https = false;
+const https = process.env.HTTPS_ENABLE ? process.env.HTTPS_ENABLE === 'true' : true;
 
 const fs = require('fs');
 const http = https ? require('https') : require('http');
