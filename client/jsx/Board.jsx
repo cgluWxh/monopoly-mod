@@ -87,8 +87,15 @@ export default class Board extends React.Component {
     dragStopped = (e, player) => {
         console.log('no more dragging', draggedPlayer);
         draggedPlayer = null;
-        const y = ("" + dragging.style.left).replace("px", "");
-        const x = ("" + dragging.style.top).replace("px", "");
+        let y = ("" + dragging.style.left).replace("px", "");
+        let x = ("" + dragging.style.top).replace("px", "");
+        const validate = (x) => {
+            if(x < 0) return 0;
+            else if(x > 950) return 950;
+            else return x;
+        }
+        x = validate(x);
+        y = validate(y);
         gameService.setPlayerPosition(player.id, x, y);
         // stop moving when mouse button is released:
         document.onmouseup = null;
