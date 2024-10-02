@@ -55,7 +55,7 @@ export default class SendMoneyDialog extends React.Component {
                     <div className="select-notes">
                         <h3>Input amount</h3>
                         <div className="notes">
-                            <input type="text" onChange={e => this.setState({toSend: parseInt(e.target.value)})} />
+                            <input type="text" onKeyDown={e => e.key === 'Enter' && this.sendMoney()} onChange={e => this.setState({toSend: parseInt(e.target.value)})} />
                         </div>
                     </div>
                 </div>
