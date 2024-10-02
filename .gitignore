@@ -1,4 +1,6 @@
 # Logs
+static/logs.txt
+static/chat.txt
 logs
 *.log
 npm-debug.log*
